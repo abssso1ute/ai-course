@@ -8,3 +8,4 @@ playwright/.cache
 .vite
 .env
 .env.*
+module_5.1/
