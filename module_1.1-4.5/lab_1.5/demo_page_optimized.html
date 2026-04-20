@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Optimized Demo Page</title>
+
+<style>
+:root {
+    --primary: #4f46e5;
+    --bg: #f3f4f6;
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+/* HEADER */
+header {
+    background: #111;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* GRID */
+.container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+@media (min-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* CARD */
+.card {
+    background: var(--bg);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    padding: 20px;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div>Logo</div>
+</header>
+
+<main class="container">
+
+    <article class="card">
+        <img src="https://via.placeholder.com/300" alt="Course image" loading="lazy">
+        <h3>Курс 1</h3>
+        <p>Описание курса</p>
+    </article>
+
+    <article class="card">
+        <img src="https://via.placeholder.com/300" alt="Course image" loading="lazy">
+        <h3>Курс 2</h3>
+        <p>Описание курса</p>
+    </article>
+
+    <article class="card">
+        <img src="https://via.placeholder.com/300" alt="Course image" loading="lazy">
+        <h3>Курс 3</h3>
+        <p>Описание курса</p>
+    </article>
+
+</main>
+
+<footer>
+    <p>Контакты</p>
+    <button>Подписаться</button>
+</footer>
+
+</body>
+</html>

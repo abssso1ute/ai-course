@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --primary-color: #4f46e5;
+    --bg: #f3f4f6;
+}
+
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.card {
+    background: var(--bg);
+    padding: 16px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+@media (min-width: 768px) {
+    .card {
+        flex-direction: row;
+    }
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+@media (min-width: 768px) {
+    .card img {
+        width: 40%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <img src="https://via.placeholder.com/300" alt="img">
+    <div>
+        <h2>Карточка</h2>
+        <p>Описание компонента карточки.</p>
+    </div>
+</div>
+
+</body>
+</html>

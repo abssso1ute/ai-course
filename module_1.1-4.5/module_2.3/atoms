@@ -1,0 +1,79 @@
+<template>
+  <button
+    :class="['btn', variant, size]"
+    :disabled="disabled"
+    @click="handleClick"
+  >
+    <slot />
+  </button>
+</template>
+
+<script setup>
+const props = defineProps({
+  variant: {
+    type: String,
+    default: "primary"
+  },
+  size: {
+    type: String,
+    default: "medium"
+  },
+  disabled: {
+    type: Boolean,
+    default: false
+  }
+});
+
+const emit = defineEmits(["click"]);
+
+function handleClick(event) {
+  if (props.disabled) return;
+  emit("click", event);
+}
+</script>
+
+<style>
+.btn {
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+/* VARIANTS */
+.primary {
+  background: var(--color-primary, #4f46e5);
+  color: white;
+}
+
+.secondary {
+  background: var(--color-secondary, #e5e7eb);
+  color: black;
+}
+
+.outline {
+  background: transparent;
+  border: 1px solid var(--color-primary, #4f46e5);
+}
+
+/* SIZES */
+.small {
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.medium {
+  padding: 10px 14px;
+  font-size: 14px;
+}
+
+.large {
+  padding: 14px 18px;
+  font-size: 16px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+</style>

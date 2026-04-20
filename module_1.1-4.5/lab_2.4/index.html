@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback Form Demo</title>
+
+<style>
+:root {
+  --primary-color: #4f46e5;
+  --error-color: #e11d48;
+  --bg-color: #f5f5f5;
+}
+
+body {
+  margin: 0;
+  /* Системный стек без внешних шрифтов — быстрее первый текстовый paint (LCP/перцепция) */
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  background: var(--bg-color);
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+.error {
+  border-color: var(--error-color);
+}
+
+.error-text {
+  color: var(--error-color);
+  font-size: 12px;
+  /* CWV/CLS: резервируем строку, чтобы появление текста ошибки не сдвигало макет */
+  min-height: 1.25rem;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: var(--primary-color);
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+  /* CWV/CLS: место под сообщение об успехе, чтобы не было скачка после отправки */
+  min-height: 1.5rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Обратная связь EduHub</h2>
+
+  <form id="form">
+
+    <label>Имя</label>
+    <input id="name" />
+    <div id="nameError" class="error-text"></div>
+
+    <label>Email</label>
+    <input id="email" />
+    <div id="emailError" class="error-text"></div>
+
+    <label>Тема</label>
+    <select id="topic">
+      <option>Техническая проблема</option>
+      <option>Вопрос по курсу</option>
+      <option>Сотрудничество</option>
+      <option>Другое</option>
+    </select>
+
+    <label>Сообщение</label>
+    <textarea id="message"></textarea>
+    <div id="msgError" class="error-text"></div>
+
+    <label>
+      <input type="checkbox" id="agree" />
+      Согласие на обработку
+    </label>
+
+    <button id="submitBtn" disabled>Отправить</button>
+
+    <div id="success" class="success"></div>
+
+  </form>
+</div>
+
+<script>
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const message = document.getElementById("message");
+const agree = document.getElementById("agree");
+const btn = document.getElementById("submitBtn");
+
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const msgError = document.getElementById("msgError");
+const success = document.getElementById("success");
+
+function validate() {
+  let valid = true;
+
+  if (name.value.length < 2) {
+    nameError.textContent = "Минимум 2 символа";
+    valid = false;
+  } else {
+    nameError.textContent = "";
+  }
+
+  if (!email.value.includes("@")) {
+    emailError.textContent = "Некорректный email";
+    valid = false;
+  } else {
+    emailError.textContent = "";
+  }
+
+  if (message.value.length < 10) {
+    msgError.textContent = "Минимум 10 символов";
+    valid = false;
+  } else {
+    msgError.textContent = "";
+  }
+
+  if (!agree.checked) valid = false;
+
+  btn.disabled = !valid;
+}
+
+[name, email, message, agree].forEach(el => {
+  el.addEventListener("input", validate);
+  el.addEventListener("change", validate);
+});
+
+document.getElementById("form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  success.textContent = "Форма успешно отправлена!";
+});
+</script>
+
+</body>
+</html>

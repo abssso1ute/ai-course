@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modal Demo</title>
+
+<style>
+body {
+  font-family: Arial;
+}
+
+/* BACKDROP */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MODAL */
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+  position: relative;
+  transform: scale(0.9);
+  opacity: 0;
+  transition: 0.2s ease;
+}
+
+.backdrop.active {
+  display: flex;
+}
+
+.backdrop.active .modal {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* CLOSE */
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+/* FORM */
+input {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 8px;
+}
+
+button {
+  padding: 10px;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<button onclick="openModal()">Открыть модалку</button>
+
+<div class="backdrop" id="backdrop" onclick="backdropClick(event)">
+  <div class="modal">
+    <div class="close" onclick="closeModal()">×</div>
+
+    <!-- "slot" контент -->
+    <h2>Вход</h2>
+    <input type="text" placeholder="Email">
+    <input type="password" placeholder="Пароль">
+    <button>Войти</button>
+
+  </div>
+</div>
+
+<script>
+const backdrop = document.getElementById("backdrop");
+
+function openModal() {
+  backdrop.classList.add("active");
+}
+
+function closeModal() {
+  backdrop.classList.remove("active");
+}
+
+function backdropClick(e) {
+  if (e.target === backdrop) {
+    closeModal();
+  }
+}
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+</script>
+
+</body>
+</html>

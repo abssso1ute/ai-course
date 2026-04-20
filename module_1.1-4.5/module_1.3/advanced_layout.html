@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced Grid Layout</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 min-h-screen">
+
+    <header class="bg-gray-900 text-white p-4 lg:col-span-3">
+        <h1>Шапка сайта</h1>
+    </header>
+
+    <main class="bg-gray-100 p-4 lg:col-span-2">
+        <h2>Основной контент</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </main>
+
+    <aside class="bg-gray-200 p-4 lg:col-span-1">
+        <h2>Сайдбар</h2>
+        <p>Дополнительная информация</p>
+    </aside>
+
+    <footer class="bg-gray-900 text-white p-4 lg:col-span-3">
+        <p>Футер сайта</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

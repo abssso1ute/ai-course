@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- critical font preload -->
+    <link rel="preload" as="font" href="/fonts/inter.woff2" type="font/woff2" crossorigin />
+
+    <!-- LCP image preload -->
+    <link rel="preload" as="image" href="/images/hero.webp" />
+
+    <!-- prefetch next route chunk -->
+    <link rel="prefetch" href="/assets/analytics.chunk.js" />
+
+    <title>Optimized App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="/src/main.jsx" defer></script>
+  </body>
+</html>
