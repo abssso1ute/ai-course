@@ -41,3 +41,9 @@
 ## Демонстрация
 
 - Видео проекта: [Transport dashboard demo.mov](https://drive.google.com/file/d/1CKmJxF5srAnIxAEBUMhHoTXAugmUY_G0/view?usp=drive_link)
+
+## Ссылки на деплой
+
+- Frontend (Netlify): [transport-dashboard-front.netlify.app](https://transport-dashboard-front.netlify.app/)
+- Backend API (Render): [transport-dashboard-api.onrender.com](https://transport-dashboard-api.onrender.com)
+- Проверка backend health: [transport-dashboard-api.onrender.com/api/health](https://transport-dashboard-api.onrender.com/api/health)
